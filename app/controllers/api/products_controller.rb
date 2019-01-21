@@ -3,13 +3,7 @@ class Api::ProductsController < ApplicationController
     @products = Product.all
     render 'index.json.jbuilder'
   end
-
-  def show
-    product_id = params[:id]
-    @product = Product.find(product_id)
-    render 'show.json.jbuilder'
-  end
-
+  
   def create
     @product = Product.new(
                            name: params[:name],
@@ -21,6 +15,13 @@ class Api::ProductsController < ApplicationController
     @product.save
     render 'show.json.jbuilder'
   end
+
+  def show
+    product_id = params[:id]
+    @product = Product.find(product_id)
+    render 'show.json.jbuilder'
+  end
+
 
   def update
     @product = Product.find(params[:id])
