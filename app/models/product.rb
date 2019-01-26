@@ -10,6 +10,10 @@ class Product < ApplicationRecord
   validates :description, length: { in: 10..300 }
 
 
+  def supplier
+    Supplier.find_by(id: self.supplier_id)
+  end
+
   def is_discounted?
     price < 10
   end

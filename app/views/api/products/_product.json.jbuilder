@@ -9,6 +9,11 @@
   json.description product.description
   json.is_discounted product.is_discounted?
   json.in_stock product.in_stock
+  json.supplier_id product.supplier_id
+
+  json.supplier  do
+    json.partial! product.supplier, partial: 'api/suppliers/supplier', as: :supplier 
+  end
 
   json.formatted_prices do
     json.price number_to_currency(product.price)
